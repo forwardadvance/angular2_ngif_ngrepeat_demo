@@ -1,9 +1,16 @@
 // ngIf
-// <div *ngIf="showKitten">Go Left</div>
+// <div *ngIf="showKitten">Kitten</div>
+// <template [ngIf]="showKitten">
+//   <img src="kitten.jpg" />
+// </template>
+//
 // ngFor:
 // <li *ngFor="let cat of cats">
 //   {{cat.name}}
 // </li>
+// [{name: "miffy"},{name: "squiffy"}, {name: "bob"}]
+// let i=index"
+// first, last, even, odd
 
 
 var AppComponent = ng.core
@@ -11,15 +18,16 @@ var AppComponent = ng.core
     selector: "app",
     template:
     `
-      <like (liked)="handleClick($event)"></like>
-      <div>{{message | json}}</div>
+      <ul>
+        <li *ngFor="let cat of cats; let i = index; let even = even; let odd = odd">
+          {{cat.name}} - {{i}}
+        </li>
+      </ul>
     `
   })
   .Class({
     constructor: function() {
-      this.handleClick = function(evt) {
-        this.message = evt;
-      }
+      this.cats = [{name: "miffy"},{name: "squiffy"}, {name: "bob"}]
     }
   })
 
@@ -39,4 +47,18 @@ ng.platformBrowserDynamic
   .platformBrowserDynamic()
   .bootstrapModule(AppModule);
 
+
+// <a (click)="showKitten = !showKitten">Click</a>
+// <!-- <div [hidden]="!showKitten">
+//   <img src="kitten.jpg" />
+// </div> -->
+// <div *ngIf="showKitten">
+//   <img src="kitten.jpg" />
+// </div>
+
+// <template [ngIf]="showKitten">
+//   <div>
+//     <img src="kitten.jpg" />
+//   </div>
+// </template>
 
